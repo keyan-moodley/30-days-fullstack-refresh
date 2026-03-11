@@ -1,10 +1,9 @@
-import Users from "./Users";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
     <div>
-      <h1>User Manager</h1>
-      <Users />
+      <UserPage />
     </div>
   );
 }
