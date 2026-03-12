@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import UserList from "../components/UserList"
 import { getUsers } from "../services/api";
+import UserForm from "../components/UserForm";
 
 function UserPage() {
     const [users, setUsers] = useState([]);
-
+    async function loadUsers() {
+        const data = await getUsers();
+        setUsers(data);
+    }
     useEffect(() => {
-        async function loadUsers() {
-            const data = await getUsers();
-            setUsers(data);
-        }
         loadUsers();
     }, []);
 
@@ -18,9 +18,10 @@ function UserPage() {
             <h1>
                 Users
             </h1>
+            <UserForm onUserCreated={loadUsers} />
             <UserList users={users} />
         </div>
     );
 }
 
-export default UserPage
+export default UserPage;
