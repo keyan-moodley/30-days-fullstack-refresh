@@ -1,6 +1,6 @@
 # 30 Days Full Stack Developer Refresh
 
-This repository documents my 30-day journey to refresh and strengthen my full stack development skills.
+This repository documents my 30-day journey to refresh and strengthen my full-stack development skills.
 
 ## Tech Stack
 
@@ -11,7 +11,6 @@ This repository documents my 30-day journey to refresh and strengthen my full st
 
 ## Goals
 
-* Improve ability to write code without AI
 * Strengthen backend and frontend development skills
 * Learn modern AI-assisted development practices
 * Prepare for software engineering interviews
