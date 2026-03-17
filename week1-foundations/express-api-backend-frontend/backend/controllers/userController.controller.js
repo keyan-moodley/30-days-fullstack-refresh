@@ -11,13 +11,11 @@ exports.getUsers = async (req, res) => {
 
 exports.addUser = async (req, res) => {
     try {
-        console.log("Adding user...")
-        if (!req.body.name) {
+        const { name } = req.body.name;
+        if (!name || name.trim() === "") {
             return res.status(400).json({ error: "Name required" });
         }
-        console.log("Fetching user info...")
-        const users = await userService.addUser(req.body.name);
-        console.log("Added user!")
+        const users = await userService.addUser(name);
         res.status(201).json(users);
     } catch (error) {
         res.status(500).json({ error: "Server error when adding users" });
