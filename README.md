@@ -33,7 +33,3 @@ Deployment, Docker, CI/CD.
 ### Week 4 — Advanced Engineering
 
 Testing, system design, AI integration.
-
-## Daily Progress
-
-Day 1 — Development environment setup and Git workflow.
