@@ -1,4 +1,4 @@
-const pool = require("../models/db")
+import pool from "../models/db";
 
 exports.getAllUsers = async (req, res) => {
     try {

@@ -1,5 +1,5 @@
-const express = require("express");
-const userRoutes = require("./routes/userRoutes.routes");
+import express from "express";
+import { userRoutes } from "./routes/userRoutes.routes";
 
 const app = express();
 

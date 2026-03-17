@@ -1,6 +1,6 @@
-const pool = require("../models/db")
+import pool from "../db/db.js";
 
-exports.getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM users");
         return result.rows;
@@ -9,7 +9,7 @@ exports.getAllUsers = async (req, res) => {
     }
 };
 
-exports.addUser = async (name) => {
+export const createUser = async (name) => {
     try {
         const addedUser = await pool.query("INSERT INTO users(name) VALUES ($1) RETURNING *", [name]);
         return addedUser.rows[0]
@@ -18,11 +18,11 @@ exports.addUser = async (name) => {
     }
 };
 
-exports.deleteUser = async (id) => {
+export const deleteUserById = async (id) => {
     await pool.query("DELETE FROM users WHERE id = $1", [id]);
 };
 
-exports.getUserById = async (id) => {
+export const getUser = async (id) => {
     const getUserById = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
     return getUserById.rows[0];
 };

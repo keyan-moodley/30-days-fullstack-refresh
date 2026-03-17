@@ -1,39 +1,39 @@
-const userService = require("../services/usersServices.service")
+import { getAllUsers, createUser, deleteUserById, getUser } from "../../services/usersServices.service.js";
 
-exports.getUsers = async (req, res) => {
+export const getUsers = async (req, res) => {
     try {
-        const users = await userService.getAllUsers();
+        const users = await getAllUsers();
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: "Server error when getting users" });
     }
 };
 
-exports.addUser = async (req, res) => {
+export const addUser = async (req, res) => {
     try {
-        const { name } = req.body.name;
+        const name = req.body.name;
         if (!name || name.trim() === "") {
             return res.status(400).json({ error: "Name required" });
         }
-        const users = await userService.addUser(name);
+        const users = await createUser(name);
         res.status(201).json(users);
     } catch (error) {
         res.status(500).json({ error: "Server error when adding users" });
     }
 };
 
-exports.deleteUser = async (req, res) => {
+export const deleteUser = async (req, res) => {
     try {
-        await userService.deleteUser(req.params.id);
+        await deleteUserById(req.params.id);
         res.json({ message: `Deleted user ${req.params.id}` });
     } catch (error) {
         res.status(500).json({ error: "Server error when deleting users" });
     }
 };
 
-exports.getUserById = async (req, res) => {
+export const getUserById = async (req, res) => {
     try {
-        const users = await userService.getUserById(req.params.id);
+        const users = await getUser(req.params.id);
         if (!users) {
             return res.sttaus(404).json({ error: "User not found" });
         }

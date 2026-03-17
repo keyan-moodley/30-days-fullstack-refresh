@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const userRoutes = require("./routes/userRoutes.routes");
+import express from "express";
+import cors from "cors";
+import userRoutes from "./routes/userRoutes.routes.js";
 
 const app = express();
 app.use(cors());
@@ -13,4 +13,11 @@ app.get("/", (req, res) => {
     res.send("API is running");
 });
 
-module.exports = app;
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({
+        error: "Something went wrong"
+    });
+});
+
+export default app;

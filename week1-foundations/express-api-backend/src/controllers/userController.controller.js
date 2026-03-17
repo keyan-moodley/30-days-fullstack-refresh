@@ -1,4 +1,4 @@
-const userService = require("../services/usersServices.service")
+import userService from "../services/usersServices.service";
 
 exports.getUsers = async (req, res) => {
     try {
